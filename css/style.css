@@ -1,4 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Courier+Prime&display=swap');
+
 * {
+    font-family: 'Courier Prime', monospace;
+    margin: 20px;
+}
+
+h1 {
     font-size: 20px;
 }
 
@@ -6,4 +13,8 @@ body {
     overflow: hidden;
     background-color: black;
     color: white;
+}
+
+#log {
+    font-size: 15px;
 }
