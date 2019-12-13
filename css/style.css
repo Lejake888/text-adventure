@@ -3,16 +3,25 @@
 * {
     font-family: 'Courier Prime', monospace;
     margin: 20px;
+    overflow: hidden;
 }
 
-h1 {
-    font-size: 20px;
+#screen {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 80vh;
+    border: 2px solid white;
 }
 
 body {
     overflow: hidden;
     background-color: black;
     color: white;
+}
+
+h2 {
+    font-size: 20px;
 }
 
 #log {
