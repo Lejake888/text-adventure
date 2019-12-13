@@ -8,7 +8,13 @@ displayText = () => {
     characterCount++;
     setTimeout(displayText, speed);
   }
+  else {
+    document.getElementById("button").style.visibility = "visible";
+
+  }
 }
+
+let nextButton = document.getElementById("button")
 
 window.onload = () => {
     displayText()
