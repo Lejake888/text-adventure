@@ -29,3 +29,8 @@ h2 {
 #log {
     font-size: 15px;
 }
+
+#inputField {
+    margin: 0;
+    outline: 2px solid white;
+}
