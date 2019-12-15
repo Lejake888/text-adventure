@@ -7,10 +7,31 @@ let speed = 50;
 let characterCount = 0;
 let messageCounter = 0;
 
+let item;
+
+class Player {
+  constructor() {
+    this.storage = [];
+  }
+}
+
 class Items {
   constructor(name) {
     this.name = name;
     this.inventorySpace = inventorySpace;
+  }
+}
+
+const collectItem = (choice) => {
+  if (choice == 1) {
+    item = new Items("Torch", 1)
+    return item
+  }
+  else if (choice == 2) {
+    item = new Items("Bread", 1)
+  }
+  else if (choice == 3) {
+    item = new Items("Knife", 1)
   }
 }
 
@@ -37,6 +58,9 @@ const displayText = (currentText) => {
   else {
     if (currentText == message3) {
       document.getElementById("inputBox").style.visibility = "visible";
+      let choice = document.getElementById("inputBox").value;
+      player.storage.push(collectItem(choice))
+      console.log(player)
     }
     document.getElementById("button").style.visibility = "visible";
   }
@@ -48,6 +72,8 @@ nextButton.addEventListener("click", () => {
   clearLog()
 });
 
+let player = new Player()
+
 window.onload = () => {
-    displayText(message1)
+  displayText(message1)
 }
