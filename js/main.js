@@ -40,24 +40,26 @@ const collectItem = (choice) => {
     item.pickedUp = true
     console.log(item)
     player.storage.push(item)
+    document.getElementById("displayBox").innerHTML = `You have picked up the: ${item.name}<br>`
+    document.getElementById("displayBox").innerHTML += `Inventory space: ${player.storage.length}`
   }
   else if (choice == 2) {
-    console.log("Inside if 2")
     let item = new Items("Bread", 1)
     console.log(item)
     item.pickedUp = true
     console.log(item)
     player.storage.push(item)
-    console.log(item)
+    document.getElementById("displayBox").innerHTML = `You have picked up the: ${item.name}<br>`
+    document.getElementById("displayBox").innerHTML += `Inventory space: ${player.storage.length}`
   }
   else if (choice == 3) {
-    console.log("Inside if 3")
     let item = new Items("Knife", 1)
     console.log(item)
     item.pickedUp = true
     console.log(item)
     player.storage.push(item)
-    console.log(item)
+    document.getElementById("displayBox").innerHTML = `You have picked up the: ${item.name}<br>`
+    document.getElementById("displayBox").innerHTML += `Inventory space: ${player.storage.length}`
   }
 }
 
