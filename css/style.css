@@ -3,6 +3,7 @@
   font-family: 'Courier Prime', monospace;
   margin: 20px;
   overflow: hidden;
+  text-transform: uppercase;
 }
 
 #screen {
@@ -25,7 +26,9 @@ h2 {
 }
 
 #log {
-  font-size: 15px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #14f314;
 }
 
 #inputBox #inputField {
