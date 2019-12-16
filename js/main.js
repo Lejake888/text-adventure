@@ -15,6 +15,11 @@ class Player {
   constructor() {
     this.storage = [];
   }
+  storageSpace() {
+    if (this.storage.length > 4) {
+      console.log("You don't have enough storage space")
+    }
+  }
 }
 
 class Items {
@@ -28,6 +33,7 @@ class Items {
 let player = new Player()
 
 const collectItem = (choice) => {
+  player.storageSpace()
   if (choice == 1) {
     let item = new Items("Torch", 1)
     console.log(item)
@@ -53,7 +59,6 @@ const collectItem = (choice) => {
     player.storage.push(item)
     console.log(item)
   }
-
 }
 
 const nextMessage = () => {
