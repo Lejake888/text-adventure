@@ -3,9 +3,14 @@ let message2 = "If you are given a choice, you must input the number assigned to
 let message3 = "You start off in a very dark room, with a single lightbulb hanging over your head. There are three items on the floor (1- Torch) (2- Bread) (3- Knife)";
 let message4 = "This is the 4th message"
 let messageArray = [message1, message2, message3, message4]
-let speed = 50; 
+// let speed = 50; 
+let speed = 5; 
 let characterCount = 0;
 let messageCounter = 0;
+
+let choice = document.getElementById("inputBox").value;
+let inputButton = document.getElementById("inputButton")
+
 
 let item;
 
@@ -16,23 +21,33 @@ class Player {
 }
 
 class Items {
-  constructor(name) {
+  constructor(name, inventorySpace) {
     this.name = name;
     this.inventorySpace = inventorySpace;
+    this.pickedUp = false;
   }
 }
 
 const collectItem = (choice) => {
-  if (choice == 1) {
+  if (choice == "1") {
     item = new Items("Torch", 1)
-    return item
+    item.pickedUp = true
+    player.storage.push(item)
+    console.log(item)
   }
-  else if (choice == 2) {
+  else if (choice == "2") {
     item = new Items("Bread", 1)
+    item.pickedUp = true
+    player.storage.push(item)
+    console.log(item)
   }
-  else if (choice == 3) {
+  else if (choice == "3") {
     item = new Items("Knife", 1)
+    item.pickedUp = true
+    player.storage.push(item)
+    console.log(item)
   }
+
 }
 
 const nextMessage = () => {
@@ -58,8 +73,6 @@ const displayText = (currentText) => {
   else {
     if (currentText == message3) {
       document.getElementById("inputBox").style.visibility = "visible";
-      let choice = document.getElementById("inputBox").value;
-      player.storage.push(collectItem(choice))
       console.log(player)
     }
     document.getElementById("button").style.visibility = "visible";
@@ -73,6 +86,10 @@ nextButton.addEventListener("click", () => {
 });
 
 let player = new Player()
+
+inputButton.addEventListener("click", () => {
+  collectItem(choice)
+});
 
 window.onload = () => {
   displayText(message1)
