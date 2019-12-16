@@ -17,7 +17,8 @@ class Player {
   }
   storageSpace() {
     if (this.storage.length > 4) {
-      console.log("You don't have enough storage space")
+      document.getElementById("displayBox").innerHTML += `You do not have room in pick up this item`
+      console.log("Not enough storage")
     }
   }
 }

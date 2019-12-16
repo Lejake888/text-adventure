@@ -28,9 +28,13 @@ h2 {
   font-size: 15px;
 }
 
-#inputField {
+#inputBox #inputField {
   margin: 0;
   outline: 2px solid white;
+}
+
+#displayBox {
+  font-size: 18px;
 }
 
 button {
@@ -42,6 +46,6 @@ button {
 
 button #nextButton {
   position: absolute;
-  bottom: 100px;
+  bottom: 100;
 }
 /*# sourceMappingURL=style.css.map */

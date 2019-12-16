@@ -30,9 +30,15 @@ h2 {
     font-size: 15px;
 }
 
-#inputField {
-    margin: 0;
-    outline: 2px solid white;
+#inputBox {
+    #inputField {
+        margin: 0;
+        outline: 2px solid white;
+    }
+}
+
+#displayBox {
+    font-size: 18px;
 }
 
 button {
