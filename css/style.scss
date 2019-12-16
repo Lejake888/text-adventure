@@ -35,9 +35,15 @@ h2 {
     outline: 2px solid white;
 }
 
-#button {
-    position:absolute; 
-    bottom: 50px;
+button {
     width: auto;
     height: auto;
+    outline: none;
+    border: 2px solid white;
+
+    #nextButton {
+        position: absolute; 
+        bottom: 100px;
+    }
 }
+
