@@ -8,11 +8,8 @@ let speed = 5;
 let characterCount = 0;
 let messageCounter = 0;
 
-let choice = document.getElementById("inputBox").value;
 let inputButton = document.getElementById("inputButton")
-
-
-let item;
+let choice;
 
 class Player {
   constructor() {
@@ -32,20 +29,27 @@ let player = new Player()
 
 const collectItem = (choice) => {
   if (choice == 1) {
-    item = new Items("Torch", 1)
-    item.pickedUp = true
-    player.storage.push(item)
+    let item = new Items("Torch", 1)
     console.log(item)
+    item.pickedUp = true
+    console.log(item)
+    player.storage.push(item)
   }
   else if (choice == 2) {
-    item = new Items("Bread", 1)
+    console.log("Inside if 2")
+    let item = new Items("Bread", 1)
+    console.log(item)
     item.pickedUp = true
+    console.log(item)
     player.storage.push(item)
     console.log(item)
   }
   else if (choice == 3) {
-    item = new Items("Knife", 1)
+    console.log("Inside if 3")
+    let item = new Items("Knife", 1)
+    console.log(item)
     item.pickedUp = true
+    console.log(item)
     player.storage.push(item)
     console.log(item)
   }
@@ -88,6 +92,7 @@ nextButton.addEventListener("click", () => {
 });
 
 inputButton.addEventListener("click", () => {
+  choice = document.getElementById("inputField").value;
   collectItem(choice)
 });
 
