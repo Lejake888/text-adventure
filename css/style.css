@@ -41,14 +41,18 @@ h2 {
 }
 
 button {
-  width: 70px;
+  width: 90px;
   height: auto;
   outline: none;
-  border: 2px solid white;
+  border: none;
+  background: none;
+  color: white;
+  font-size: 14px;
+  margin-right: 0;
+  margin-left: 10px;
 }
 
-button #nextButton, button #previous {
-  position: absolute;
-  bottom: 100;
+button:hover {
+  color: #14f314;
 }
 /*# sourceMappingURL=style.css.map */

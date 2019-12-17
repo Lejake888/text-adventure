@@ -1,7 +1,7 @@
 let message1 = "Welcome to the 'text-based adventure' game! This game will include a few puzzle to test you, as well as choices that will determine your path throughout the game. Will you be able to win? Press the 'Next' button to continue.";
 let message2 = "If you are given a choice, you must input the number assigned to that item. For example, you will be given a list of items (1- Torch) (2- Bread) (3- Knife). If you want to pick up the 'Torch', you would input the number '1'. Each item takes up a space in your inventory. Bigger items take up more space. By default, you have an inventory size of 4.";
 let message3 = "You start off in a very dark room, with a single lightbulb hanging over your head. There are three items on the floor, pick up what you want, if anything (1- Torch) (2- Bread) (3- Knife)";
-let message4 = "The room is still very dark"
+let message4 = ""
 let messageArray = [message1, message2, message3, message4]
 // let speed = 50; 
 let speed = 5; 
@@ -36,13 +36,18 @@ class Items {
 
 let player = new Player()
 
+const useItem = () => {
+  document.getElementById("log").innerHTML = `What item would you like to use:<br>`
+  // document.getElementById("log").innerHTML = `1: ${player.storage[0].name}<br>2: ${player.storage[1].name}<br>3: ${player.storage[2].name}<br>4: ${player.storage[3].name}<br>`
+  inputBox.style.visibility = "visible";
+  let currentItem = inputBox.value;
+}
+
 const duplicateCheck = (item) => {
   console.log(item.name)
   for (i = 0; i < player.storage.length; i++) {
     if (item.name == player.storage[i].name) {
-      // player.storage.shift(item) // Shift doesn't seem to be working, use different method, only removing first item
-      console.log("Already have this item")
-      document.getElementById("displayBox").innerHTML = `You already have this item in your inventory<br>`
+      // document.getElementById("displayBox").innerHTML = `You already have this item in your inventory<br>`
       return true
     }
   }
@@ -67,7 +72,6 @@ const itemPickup = (choice) => {
   }
   else {
     player.storage.push(item)
-
   }
   
   document.getElementById("displayBox").innerHTML = `You have picked up the: ${item.name}<br>`
@@ -108,7 +112,8 @@ const clearLog = (bool) => {
 const displayText = (currentText) => {
   nextButton.style.visibility = "hidden";
   previousButton.style.visibility = "hidden";
-  document.getElementById("inputBox").style.visibility = "hidden";
+  useItemButton.style.visibility = "hidden";
+  inputBox.style.visibility = "hidden";
 
   if (characterCount < currentText.length) {
     document.getElementById("log").innerHTML += currentText.charAt(characterCount);
@@ -117,16 +122,19 @@ const displayText = (currentText) => {
   }
   else {
     if (currentText == message3) {
-      document.getElementById("inputBox").style.visibility = "visible";
+      inputBox.style.visibility = "visible";
       console.log(player)
     }
     nextButton.style.visibility = "visible";
     previousButton.style.visibility = "visible";
+    useItemButton.style.visibility = "visible";
   }
 }
 
+let inputBox = document.getElementById("inputBox")
 let nextButton = document.getElementById("nextButton")
 let previousButton = document.getElementById("previousButton")
+let useItemButton = document.getElementById("useItemButton")
 
 nextButton.addEventListener("click", () => {
   clearLog(true)
@@ -134,6 +142,10 @@ nextButton.addEventListener("click", () => {
 
 previousButton.addEventListener("click", () => {
   clearLog(false)
+});
+
+useItemButton.addEventListener("click", () => {
+  useItem()
 });
 
 inputButton.addEventListener("click", () => {
