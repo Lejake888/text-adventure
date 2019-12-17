@@ -5,6 +5,7 @@ let message4 = "You start off in a very dark room, with a single lightbulb hangi
 let message5 = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo magni nam quaerat optio, eaque pariatur, ex id mollitia soluta recusandae architecto quam velit repellat quod nisi tempore ipsam, ullam provident!";
 let messageArray = [message1, message2, message3, message4, message5]
 // let speed = 50; 
+// let speed = 30; 
 let speed = 5; 
 let characterCount = 0;
 let messageCounter = 0;
@@ -37,11 +38,10 @@ class Items {
 
 let player = new Player()
 
-const useItem = () => {
+const useItem = (choice) => {
+  document.getElementById("displayBox").innerHTML = ``
   document.getElementById("log").innerHTML = `What item would you like to use:<br>`
-  // document.getElementById("log").innerHTML = `1: ${player.storage[0].name}<br>2: ${player.storage[1].name}<br>3: ${player.storage[2].name}<br>4: ${player.storage[3].name}<br>`
-  inputBox.style.visibility = "visible";
-  let currentItem = inputBox.value;
+  console.log(choice)
 }
 
 const duplicateCheck = (item) => {
@@ -65,7 +65,7 @@ const itemPickup = (choice) => {
     item = new Items("Knife", 1)
   }
   item.pickedUp = true
-  let duplicated = duplicateCheck(item) // Order might be messed up, switch?
+  let duplicated = duplicateCheck(item) 
   if (duplicated) {
     player.storage.push(item)
     player.storage.pop()
@@ -152,7 +152,12 @@ useItemButton.addEventListener("click", () => {
 
 inputButton.addEventListener("click", () => {
   choice = document.getElementById("inputField").value;
-  collectItem(choice)
+  if (messageCounter == 3) {
+    collectItem(choice)
+  }
+  else {
+    useItem(choice)
+  }
 });
 
 window.onload = () => {
