@@ -17,8 +17,10 @@ class Player {
   }
   storageSpace() {
     if (this.storage.length > 4) {
-      document.getElementById("displayBox").innerHTML += `You do not have room in pick up this item`
-      console.log("Not enough storage")
+      return false;
+    }
+    else {
+      return true;
     }
   }
 }
@@ -34,33 +36,38 @@ class Items {
 let player = new Player()
 
 const collectItem = (choice) => {
-  player.storageSpace()
-  if (choice == 1) {
-    let item = new Items("Torch", 1)
-    console.log(item)
-    item.pickedUp = true
-    console.log(item)
-    player.storage.push(item)
-    document.getElementById("displayBox").innerHTML = `You have picked up the: ${item.name}<br>`
-    document.getElementById("displayBox").innerHTML += `Inventory space: ${player.storage.length}`
+  let playerStorage = player.storageSpace()      
+  if (playerStorage) {  
+    if (choice == 1) {
+      let item = new Items("Torch", 1)
+      console.log(item)
+      item.pickedUp = true
+      console.log(item)
+      player.storage.push(item)
+      document.getElementById("displayBox").innerHTML = `You have picked up the: ${item.name}<br>`
+      document.getElementById("displayBox").innerHTML += `Inventory space: ${player.storage.length}`
+    }
+    else if (choice == 2) {
+      let item = new Items("Bread", 1)
+      console.log(item)
+      item.pickedUp = true
+      console.log(item)
+      player.storage.push(item)
+      document.getElementById("displayBox").innerHTML = `You have picked up the: ${item.name}<br>`
+      document.getElementById("displayBox").innerHTML += `Inventory space: ${player.storage.length}`
+    }
+    else if (choice == 3) {
+      let item = new Items("Knife", 1)
+      console.log(item)
+      item.pickedUp = true
+      console.log(item)
+      player.storage.push(item)
+      document.getElementById("displayBox").innerHTML = `You have picked up the: ${item.name}<br>`
+      document.getElementById("displayBox").innerHTML += `Inventory space: ${player.storage.length}`
+    }
   }
-  else if (choice == 2) {
-    let item = new Items("Bread", 1)
-    console.log(item)
-    item.pickedUp = true
-    console.log(item)
-    player.storage.push(item)
-    document.getElementById("displayBox").innerHTML = `You have picked up the: ${item.name}<br>`
-    document.getElementById("displayBox").innerHTML += `Inventory space: ${player.storage.length}`
-  }
-  else if (choice == 3) {
-    let item = new Items("Knife", 1)
-    console.log(item)
-    item.pickedUp = true
-    console.log(item)
-    player.storage.push(item)
-    document.getElementById("displayBox").innerHTML = `You have picked up the: ${item.name}<br>`
-    document.getElementById("displayBox").innerHTML += `Inventory space: ${player.storage.length}`
+  else {
+    document.getElementById("displayBox").innerHTML = `You do not have room in pick up this item`
   }
 }
 
