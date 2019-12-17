@@ -40,11 +40,13 @@ const duplicateCheck = (item) => {
   console.log(item.name)
   for (i = 0; i < player.storage.length; i++) {
     if (item.name == player.storage[i].name) {
-      player.storage.shift(item) // Shift doesn't seem to be working, use different method, only removing first item
+      // player.storage.shift(item) // Shift doesn't seem to be working, use different method, only removing first item
       console.log("Already have this item")
       document.getElementById("displayBox").innerHTML = `You already have this item in your inventory<br>`
+      return true
     }
   }
+  return false 
 }
 
 const itemPickup = (choice) => {
@@ -58,8 +60,16 @@ const itemPickup = (choice) => {
     item = new Items("Knife", 1)
   }
   item.pickedUp = true
-  duplicateCheck(item) // Order might be messed up, switch?
-  player.storage.push(item)
+  let duplicated = duplicateCheck(item) // Order might be messed up, switch?
+  if (duplicated) {
+    player.storage.push(item)
+    player.storage.pop()
+  }
+  else {
+    player.storage.push(item)
+
+  }
+  
   document.getElementById("displayBox").innerHTML = `You have picked up the: ${item.name}<br>`
   document.getElementById("displayBox").innerHTML += `Inventory space: ${player.storage.length}`
 }
