@@ -9,8 +9,8 @@
 #screen {
   margin-left: auto;
   margin-right: auto;
-  width: 80%;
-  height: 80vh;
+  width: 700px;
+  height: 600px;
   border: 2px solid white;
   background-color: #161616;
 }
