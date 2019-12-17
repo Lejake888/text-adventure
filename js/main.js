@@ -1,7 +1,7 @@
 let message1 = "Welcome to the 'text-based adventure' game! This game will include a few puzzle to test you, as well as choices that will determine your path throughout the game. Will you be able to win? Press the 'Next' button to continue.";
 let message2 = "If you are given a choice, you must input the number assigned to that item. For example, you will be given a list of items (1- Torch) (2- Bread) (3- Knife). If you want to pick up the 'Torch', you would input the number '1'. Each item takes up a space in your inventory. Bigger items take up more space. By default, you have an inventory size of 4.";
-let message3 = "You start off in a very dark room, with a single lightbulb hanging over your head. There are three items on the floor (1- Torch) (2- Bread) (3- Knife)";
-let message4 = "This is the 4th message"
+let message3 = "You start off in a very dark room, with a single lightbulb hanging over your head. There are three items on the floor, pick up what you want, if anything (1- Torch) (2- Bread) (3- Knife)";
+let message4 = "The room is still very dark"
 let messageArray = [message1, message2, message3, message4]
 // let speed = 50; 
 let speed = 5; 
@@ -88,19 +88,26 @@ const collectItem = (choice) => {
   }
 }
 
-const nextMessage = () => {
+const nextMessage = (bool) => {
   characterCount = 0;
-  messageCounter++
+  if (bool) {
+    messageCounter++
+  }
+  else {
+    messageCounter--
+  }
   displayText(messageArray[messageCounter])
+
 }
 
-const clearLog = () => {
+const clearLog = (bool) => {
   document.getElementById("log").innerHTML = ""
-  nextMessage()
+  nextMessage(bool)
 }
 
 const displayText = (currentText) => {
-  document.getElementById("nextButton").style.visibility = "hidden";
+  nextButton.style.visibility = "hidden";
+  previousButton.style.visibility = "hidden";
   document.getElementById("inputBox").style.visibility = "hidden";
 
   if (characterCount < currentText.length) {
@@ -113,14 +120,20 @@ const displayText = (currentText) => {
       document.getElementById("inputBox").style.visibility = "visible";
       console.log(player)
     }
-    document.getElementById("nextButton").style.visibility = "visible";
+    nextButton.style.visibility = "visible";
+    previousButton.style.visibility = "visible";
   }
 }
 
 let nextButton = document.getElementById("nextButton")
+let previousButton = document.getElementById("previousButton")
 
 nextButton.addEventListener("click", () => {
-  clearLog()
+  clearLog(true)
+});
+
+previousButton.addEventListener("click", () => {
+  clearLog(false)
 });
 
 inputButton.addEventListener("click", () => {

@@ -46,12 +46,12 @@ h2 {
 }
 
 button {
-    width: auto;
+    width: 70px;
     height: auto;
     outline: none;
     border: 2px solid white;
 
-    #nextButton {
+    #nextButton, #previous {
         position: absolute; 
         bottom: 100;
     }
