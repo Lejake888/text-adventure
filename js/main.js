@@ -71,7 +71,11 @@ const itemPickup = (choice) => {
   }
   
   document.getElementById("displayBox").innerHTML = `You have picked up the: ${item.name}<br>`
-  document.getElementById("displayBox").innerHTML += `Inventory space: ${player.storage.length}`
+  document.getElementById("displayBox").innerHTML += `Inventory space: ${player.storage.length}<br>`
+  document.getElementById("displayBox").innerHTML += `Inventory:<br>`
+  for (i=0; i < player.storage.length; i++) {
+    document.getElementById("displayBox").innerHTML += `- ${player.storage[i].name}<br>`
+  }
 }
 
 const collectItem = (choice) => {
