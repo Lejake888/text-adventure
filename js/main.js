@@ -35,31 +35,38 @@ class Items {
 
 let player = new Player()
 
+const duplicateCheck = (item) => {
+  console.log(item.name)
+  for (i = 0; i < player.storage.length; i++) {
+    if (item.name == player.storage[i].name) {
+      player.storage.shift(item)
+      console.log("Already have this item")
+      document.getElementById("displayBox").innerHTML = `You already have this item in your inventory<br>`
+    }
+  }
+}
+
 const itemPickup = (choice) => {
-  
   if (choice == 1) {
     let item = new Items("Torch", 1)
-    console.log(item)
     item.pickedUp = true
-    console.log(item)
+    duplicateCheck(item)
     player.storage.push(item)
     document.getElementById("displayBox").innerHTML = `You have picked up the: ${item.name}<br>`
     document.getElementById("displayBox").innerHTML += `Inventory space: ${player.storage.length}`
   }
   else if (choice == 2) {
     let item = new Items("Bread", 1)
-    console.log(item)
     item.pickedUp = true
-    console.log(item)
+    duplicateCheck(item)
     player.storage.push(item)
     document.getElementById("displayBox").innerHTML = `You have picked up the: ${item.name}<br>`
     document.getElementById("displayBox").innerHTML += `Inventory space: ${player.storage.length}`
   }
   else if (choice == 3) {
     let item = new Items("Knife", 1)
-    console.log(item)
     item.pickedUp = true
-    console.log(item)
+    duplicateCheck(item)
     player.storage.push(item)
     document.getElementById("displayBox").innerHTML = `You have picked up the: ${item.name}<br>`
     document.getElementById("displayBox").innerHTML += `Inventory space: ${player.storage.length}`
