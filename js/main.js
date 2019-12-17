@@ -10,6 +10,7 @@ let messageCounter = 0;
 
 let inputButton = document.getElementById("inputButton")
 let choice;
+let item;
 
 class Player {
   constructor() {
@@ -48,29 +49,19 @@ const duplicateCheck = (item) => {
 
 const itemPickup = (choice) => {
   if (choice == 1) {
-    let item = new Items("Torch", 1)
-    item.pickedUp = true
-    duplicateCheck(item)
-    player.storage.push(item)
-    document.getElementById("displayBox").innerHTML = `You have picked up the: ${item.name}<br>`
-    document.getElementById("displayBox").innerHTML += `Inventory space: ${player.storage.length}`
+    item = new Items("Torch", 1)
   }
   else if (choice == 2) {
-    let item = new Items("Bread", 1)
-    item.pickedUp = true
-    duplicateCheck(item)
-    player.storage.push(item)
-    document.getElementById("displayBox").innerHTML = `You have picked up the: ${item.name}<br>`
-    document.getElementById("displayBox").innerHTML += `Inventory space: ${player.storage.length}`
+    item = new Items("Bread", 1)
   }
   else if (choice == 3) {
-    let item = new Items("Knife", 1)
-    item.pickedUp = true
-    duplicateCheck(item)
-    player.storage.push(item)
-    document.getElementById("displayBox").innerHTML = `You have picked up the: ${item.name}<br>`
-    document.getElementById("displayBox").innerHTML += `Inventory space: ${player.storage.length}`
+    item = new Items("Knife", 1)
   }
+  item.pickedUp = true
+  duplicateCheck(item)
+  player.storage.push(item)
+  document.getElementById("displayBox").innerHTML = `You have picked up the: ${item.name}<br>`
+  document.getElementById("displayBox").innerHTML += `Inventory space: ${player.storage.length}`
 }
 
 const collectItem = (choice) => {
