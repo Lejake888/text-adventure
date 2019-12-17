@@ -1,8 +1,9 @@
 let message1 = "Welcome to the 'text-based adventure' game! This game will include a few puzzle to test you, as well as choices that will determine your path throughout the game. Will you be able to win? Press the 'Next' button to continue.";
-let message2 = "If you are given a choice, you must input the number assigned to that item. For example, you will be given a list of items (1- Torch) (2- Bread) (3- Knife). If you want to pick up the 'Torch', you would input the number '1'. Each item takes up a space in your inventory. Bigger items take up more space. By default, you have an inventory size of 4.";
-let message3 = "You start off in a very dark room, with a single lightbulb hanging over your head. There are three items on the floor, pick up what you want, if anything (1- Torch) (2- Bread) (3- Knife)";
-let message4 = ""
-let messageArray = [message1, message2, message3, message4]
+let message2 = "If you are given a choice, you must input the number assigned to that item. For example, you will be given a list of items (1- Torch) (2- Bread) (3- Knife). If you want to pick up the 'Torch', you would input the number '1'. Once you pick up that item, it is in your inventory and will not be available for you to pick up. Each item takes up a space in your inventory. Bigger items take up more space. There will be way to increase your storage space throughout the game, but by default, you have an inventory size of 4. To use an item, click the 'Use Item' button.";
+let message3 = "The game will start after this screen... good luck";
+let message4 = "You start off in a very dark room, with a single lightbulb hanging over your head. There are three items on the floor, pick up what you want, if anything (1- Torch) (2- Bread) (3- Knife)";
+let message5 = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo magni nam quaerat optio, eaque pariatur, ex id mollitia soluta recusandae architecto quam velit repellat quod nisi tempore ipsam, ullam provident!";
+let messageArray = [message1, message2, message3, message4, message5]
 // let speed = 50; 
 let speed = 5; 
 let characterCount = 0;
@@ -47,7 +48,6 @@ const duplicateCheck = (item) => {
   console.log(item.name)
   for (i = 0; i < player.storage.length; i++) {
     if (item.name == player.storage[i].name) {
-      // document.getElementById("displayBox").innerHTML = `You already have this item in your inventory<br>`
       return true
     }
   }
@@ -114,6 +114,7 @@ const displayText = (currentText) => {
   previousButton.style.visibility = "hidden";
   useItemButton.style.visibility = "hidden";
   inputBox.style.visibility = "hidden";
+  document.getElementById("displayBox").innerHTML = ""
 
   if (characterCount < currentText.length) {
     document.getElementById("log").innerHTML += currentText.charAt(characterCount);
@@ -121,10 +122,11 @@ const displayText = (currentText) => {
     setTimeout(() => {displayText(currentText)}, speed)
   }
   else {
-    if (currentText == message3) {
+    if (currentText == message4) {
       inputBox.style.visibility = "visible";
       console.log(player)
     }
+    
     nextButton.style.visibility = "visible";
     previousButton.style.visibility = "visible";
     useItemButton.style.visibility = "visible";
