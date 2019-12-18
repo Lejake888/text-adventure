@@ -41,7 +41,22 @@ let player = new Player()
 const useItem = (choice) => {
   document.getElementById("displayBox").innerHTML = ``
   document.getElementById("log").innerHTML = `What item would you like to use:<br>`
-  console.log(choice)
+  if (choice == 1) {
+    console.log(player.storage[0])
+    // return player.storage[0]
+  }
+  else if (choice == 2) {
+    console.log(player.storage[1])
+    // return player.storage[1]
+  }
+  else if (choice == 3) {
+    console.log(player.storage[2])
+    // return player.storage[2]
+  }
+  else if (choice == 4) {
+    console.log(player.storage[3])
+    // return player.storage[3]
+  }
 }
 
 const duplicateCheck = (item) => {
@@ -147,6 +162,7 @@ previousButton.addEventListener("click", () => {
 });
 
 useItemButton.addEventListener("click", () => {
+  inputBox.style.visibility = "visible";
   useItem()
 });
 
