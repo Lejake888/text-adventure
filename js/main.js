@@ -4,9 +4,14 @@ let message3 = "The game will start after this screen... good luck";
 let message4 = "You start off in a very dark room, with a single lightbulb hanging over your head. There are three items on the floor, pick up what you want, if anything (1- Torch) (2- Key) (3- Knife)";
 let message5 = "It's still very dark, and you can barely see in front of you. You won't be able to move on if you want to continue";
 
+let message6 = "You walk through the door and there is a lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam molestiae, nisi incidunt magnam eum natus quibusdam doloremque repellendus fugiat aliquam eius a cum, necessitatibus tempora possimus dolor ipsum sunt expedita."
+
 let puzzle1 = "You turn on the torch, and it instantly becomes easier to see. You look around the room to see three doors ahead. (1- Blue) (2- Yellow) (3-Red)"
-let messageArray = [message1, message2, message3, message4, message5]
+
+let stage1Array = [message1, message2, message3, message4, message5]
+let stage2Array = [message6]
 let puzzleArray = [puzzle1]
+
 // let speed = 50; 
 // let speed = 30; 
 let speed = 1; 
@@ -126,7 +131,7 @@ const nextMessage = (bool) => {
   else {
     messageCounter--
   }
-  displayText(messageArray[messageCounter])
+  displayText(stage1Array[messageCounter])
 }
 
 const clearLog = (bool) => {
