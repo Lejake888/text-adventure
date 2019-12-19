@@ -42,6 +42,10 @@ class Items {
 
 let player = new Player()
 
+const dropItem = () => {
+  console.log("dropped an item")
+}
+
 const useItem = () => {
   document.getElementById("displayBox").innerHTML = ``
   document.getElementById("log").innerHTML = `What item would you like to use:<br>`
@@ -134,6 +138,7 @@ const displayText = (currentText) => {
   nextButton.style.visibility = "hidden";
   previousButton.style.visibility = "hidden";
   useItemButton.style.visibility = "hidden";
+  dropItemButton.style.visibility = "hidden";
   inputBox.style.visibility = "hidden";
   document.getElementById("displayBox").innerHTML = ""
 
@@ -151,6 +156,7 @@ const displayText = (currentText) => {
     nextButton.style.visibility = "visible";
     previousButton.style.visibility = "visible";
     useItemButton.style.visibility = "visible";
+    dropItemButton.style.visibility = "visible";
   }
 }
 
@@ -158,6 +164,7 @@ let inputBox = document.getElementById("inputBox")
 let nextButton = document.getElementById("nextButton")
 let previousButton = document.getElementById("previousButton")
 let useItemButton = document.getElementById("useItemButton")
+let dropItemButton = document.getElementById("dropItemButton")
 
 nextButton.addEventListener("click", () => {
   clearLog(true)
@@ -170,6 +177,11 @@ previousButton.addEventListener("click", () => {
 useItemButton.addEventListener("click", () => {
   inputBox.style.visibility = "visible";
   useItem()
+});
+
+useItemButton.addEventListener("click", () => {
+  inputBox.style.visibility = "visible";
+  dropItem()
 });
 
 inputButton.addEventListener("click", () => {
