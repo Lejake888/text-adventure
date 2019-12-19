@@ -1,10 +1,10 @@
 let message1 = "Welcome to the 'text-based adventure' game! This game will include a few puzzle to test you, as well as choices that will determine your path throughout the game. Will you be able to win? Press the 'Next' button to continue.";
-let message2 = "If you are given a choice, you must input the number assigned to that item. For example, you will be given a list of items (1- Torch) (2- Bread) (3- Knife). If you want to pick up the 'Torch', you would input the number '1'. Once you pick up that item, it is in your inventory and will not be available for you to pick up. Each item takes up a space in your inventory. Bigger items take up more space. There will be way to increase your storage space throughout the game, but by default, you have an inventory size of 4. To use an item, click the 'Use Item' button.";
+let message2 = "If you are given a choice, you must input the number assigned to that item. For example, you will be given a list of items (1- Torch) (2- Key) (3- Knife). If you want to pick up the 'Torch', you would input the number '1'. Once you pick up that item, it is in your inventory and will not be available for you to pick up. Each item takes up a space in your inventory. Bigger items take up more space. There will be way to increase your storage space throughout the game, but by default, you have an inventory size of 4. To use an item, click the 'Use Item' button.";
 let message3 = "The game will start after this screen... good luck";
-let message4 = "You start off in a very dark room, with a single lightbulb hanging over your head. There are three items on the floor, pick up what you want, if anything (1- Torch) (2- Bread) (3- Knife)";
+let message4 = "You start off in a very dark room, with a single lightbulb hanging over your head. There are three items on the floor, pick up what you want, if anything (1- Torch) (2- Key) (3- Knife)";
 let message5 = "It's still very dark, and you can barely see in front of you. You won't be able to move on if you want to continue";
 
-let puzzle1 = "You turn on the torch, and it instantly becomes easier to see. You look around the room to see "
+let puzzle1 = "You turn on the torch, and it instantly becomes easier to see. You look around the room to see three doors ahead. (1- Blue) (2- Yellow) (3-Red)"
 let messageArray = [message1, message2, message3, message4, message5]
 let puzzleArray = [puzzle1]
 // let speed = 50; 
@@ -45,6 +45,9 @@ let player = new Player()
 const useItem = () => {
   document.getElementById("displayBox").innerHTML = ``
   document.getElementById("log").innerHTML = `What item would you like to use:<br>`
+  for (i=0; i < player.storage.length; i++) {
+    document.getElementById("log").innerHTML += `- ${player.storage[i].name}<br>`
+  }
   if (choice == 1) {
     console.log(player.storage[0])
     return player.storage[0]
@@ -79,7 +82,7 @@ const itemPickup = (choice) => {
     item = new Items("Torch", 1)
   }
   else if (choice == 2) {
-    item = new Items("Bread", 1)
+    item = new Items("Key", 1)
   }
   else if (choice == 3) {
     item = new Items("Knife", 1)
@@ -179,7 +182,7 @@ inputButton.addEventListener("click", () => {
     // document.getElementById("displayBox").innerHTML = `You used the: ${used.name}`
     // player.storage.pop(used) // It's probably splice/slice to get rid of specific item
     if (messageCounter == 4) {
-      // nextButton.disabled = true;
+      nextButton.disabled = true;
       if (used.name == "Torch") {
         document.getElementById("log").innerHTML = ""
         console.log("item used")
