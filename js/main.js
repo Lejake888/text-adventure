@@ -9,9 +9,10 @@ let messageArray = [message1, message2, message3, message4, message5]
 let puzzleArray = [puzzle1]
 // let speed = 50; 
 // let speed = 30; 
-let speed = 5; 
+let speed = 1; 
 let characterCount = 0;
 let messageCounter = 0;
+let puzzleCounter = 0;
 
 let inputButton = document.getElementById("inputButton")
 let choice;
@@ -118,7 +119,6 @@ const nextMessage = (bool) => {
     messageCounter--
   }
   displayText(messageArray[messageCounter])
-
 }
 
 const clearLog = (bool) => {
@@ -178,9 +178,16 @@ inputButton.addEventListener("click", () => {
     // document.getElementById("displayBox").innerHTML = `You used the: ${used.name}`
     // player.storage.pop(used) // It's probably splice/slice to get rid of specific item
     if (used.name == "Torch" && messageCounter == 4) {
+      document.getElementById("log").innerHTML = ""
       console.log("item used")
-      displayText(puzzleArray[0])
+      characterCount = 0;
+      console.log(puzzleArray[puzzleCounter])
+      displayText(puzzleArray[puzzleCounter])
+      puzzleCounter++
     }
+    // else {
+
+    // }
   }
 });
 
