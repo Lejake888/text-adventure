@@ -2,8 +2,11 @@ let message1 = "Welcome to the 'text-based adventure' game! This game will inclu
 let message2 = "If you are given a choice, you must input the number assigned to that item. For example, you will be given a list of items (1- Torch) (2- Bread) (3- Knife). If you want to pick up the 'Torch', you would input the number '1'. Once you pick up that item, it is in your inventory and will not be available for you to pick up. Each item takes up a space in your inventory. Bigger items take up more space. There will be way to increase your storage space throughout the game, but by default, you have an inventory size of 4. To use an item, click the 'Use Item' button.";
 let message3 = "The game will start after this screen... good luck";
 let message4 = "You start off in a very dark room, with a single lightbulb hanging over your head. There are three items on the floor, pick up what you want, if anything (1- Torch) (2- Bread) (3- Knife)";
-let message5 = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo magni nam quaerat optio, eaque pariatur, ex id mollitia soluta recusandae architecto quam velit repellat quod nisi tempore ipsam, ullam provident!";
+let message5 = "It's still very dark, and you can barely see in front of you. You won't be able to move on if you want to continue";
+
+let puzzle1 = "The room lights up and you can now see"
 let messageArray = [message1, message2, message3, message4, message5]
+let puzzleArray = [puzzle1]
 // let speed = 50; 
 // let speed = 30; 
 let speed = 5; 
@@ -172,8 +175,12 @@ inputButton.addEventListener("click", () => {
   }
   else {
     let used = useItem()
-    document.getElementById("displayBox").innerHTML = `You used the: ${used.name}`
-
+    // document.getElementById("displayBox").innerHTML = `You used the: ${used.name}`
+    // player.storage.pop(used) // It's probably splice/slice to get rid of specific item
+    if (used.name == "Torch" && messageCounter == 4) {
+      console.log("item used")
+      displayText(puzzleArray[0])
+    }
   }
 });
 
