@@ -38,24 +38,24 @@ class Items {
 
 let player = new Player()
 
-const useItem = (choice) => {
+const useItem = () => {
   document.getElementById("displayBox").innerHTML = ``
   document.getElementById("log").innerHTML = `What item would you like to use:<br>`
   if (choice == 1) {
     console.log(player.storage[0])
-    // return player.storage[0]
+    return player.storage[0]
   }
   else if (choice == 2) {
     console.log(player.storage[1])
-    // return player.storage[1]
+    return player.storage[1]
   }
   else if (choice == 3) {
     console.log(player.storage[2])
-    // return player.storage[2]
+    return player.storage[2]
   }
   else if (choice == 4) {
     console.log(player.storage[3])
-    // return player.storage[3]
+    return player.storage[3]
   }
 }
 
@@ -87,13 +87,12 @@ const itemPickup = (choice) => {
   }
   else {
     player.storage.push(item)
-  }
-  
-  document.getElementById("displayBox").innerHTML = `You have picked up the: ${item.name}<br>`
-  document.getElementById("displayBox").innerHTML += `Inventory space: ${player.storage.length}<br>`
-  document.getElementById("displayBox").innerHTML += `Inventory:<br>`
-  for (i=0; i < player.storage.length; i++) {
-    document.getElementById("displayBox").innerHTML += `- ${player.storage[i].name}<br>`
+    document.getElementById("displayBox").innerHTML = `You have picked up the: ${item.name}<br>`
+    document.getElementById("displayBox").innerHTML += `Inventory space: ${player.storage.length}<br>`
+    document.getElementById("displayBox").innerHTML += `Inventory:<br>`
+    for (i=0; i < player.storage.length; i++) {
+      document.getElementById("displayBox").innerHTML += `- ${player.storage[i].name}<br>`
+    }
   }
 }
 
@@ -172,7 +171,9 @@ inputButton.addEventListener("click", () => {
     collectItem(choice)
   }
   else {
-    useItem(choice)
+    let used = useItem()
+    document.getElementById("displayBox").innerHTML = `You used the: ${used.name}`
+
   }
 });
 
