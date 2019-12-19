@@ -4,7 +4,7 @@ let message3 = "The game will start after this screen... good luck";
 let message4 = "You start off in a very dark room, with a single lightbulb hanging over your head. There are three items on the floor, pick up what you want, if anything (1- Torch) (2- Bread) (3- Knife)";
 let message5 = "It's still very dark, and you can barely see in front of you. You won't be able to move on if you want to continue";
 
-let puzzle1 = "The room lights up and you can now see"
+let puzzle1 = "You turn on the torch, and it instantly becomes easier to see. You look around the room to see "
 let messageArray = [message1, message2, message3, message4, message5]
 let puzzleArray = [puzzle1]
 // let speed = 50; 
@@ -74,6 +74,7 @@ const duplicateCheck = (item) => {
 }
 
 const itemPickup = (choice) => {
+  // Add a check for message counter
   if (choice == 1) {
     item = new Items("Torch", 1)
   }
@@ -177,17 +178,20 @@ inputButton.addEventListener("click", () => {
     let used = useItem()
     // document.getElementById("displayBox").innerHTML = `You used the: ${used.name}`
     // player.storage.pop(used) // It's probably splice/slice to get rid of specific item
-    if (used.name == "Torch" && messageCounter == 4) {
-      document.getElementById("log").innerHTML = ""
-      console.log("item used")
-      characterCount = 0;
-      console.log(puzzleArray[puzzleCounter])
-      displayText(puzzleArray[puzzleCounter])
-      puzzleCounter++
+    if (messageCounter == 4) {
+      // nextButton.disabled = true;
+      if (used.name == "Torch") {
+        document.getElementById("log").innerHTML = ""
+        console.log("item used")
+        characterCount = 0;
+        console.log(puzzleArray[puzzleCounter])
+        displayText(puzzleArray[puzzleCounter])
+        puzzleCounter++
+      }
+      else {
+        document.getElementById("displayBox").innerHTML = `Using the ${used.name} did nothing<br>`
+      }
     }
-    // else {
-
-    // }
   }
 });
 
