@@ -48,7 +48,11 @@ class Items {
 let player = new Player()
 
 const dropItem = () => {
-  console.log("dropped an item")
+  document.getElementById("displayBox").innerHTML = ``
+  document.getElementById("log").innerHTML = `What item would you like to drop:<br>`
+  for (i=0; i < player.storage.length; i++) {
+    document.getElementById("log").innerHTML += `- ${player.storage[i].name}<br>`
+  }
 }
 
 const useItem = () => {
@@ -184,7 +188,7 @@ useItemButton.addEventListener("click", () => {
   useItem()
 });
 
-useItemButton.addEventListener("click", () => {
+dropItemButton.addEventListener("click", () => {
   inputBox.style.visibility = "visible";
   dropItem()
 });
@@ -199,7 +203,7 @@ inputButton.addEventListener("click", () => {
     // document.getElementById("displayBox").innerHTML = `You used the: ${used.name}`
     // player.storage.pop(used) // It's probably splice/slice to get rid of specific item
     if (messageCounter == 4) {
-      nextButton.disabled = true;
+      // nextButton.disabled = true;
       if (used.name == "Torch") {
         document.getElementById("log").innerHTML = ""
         console.log("item used")
@@ -211,6 +215,9 @@ inputButton.addEventListener("click", () => {
       else {
         document.getElementById("displayBox").innerHTML = `Using the ${used.name} did nothing<br>`
       }
+    }
+    else {
+      // nextButton.disabled = false;
     }
   }
 });
