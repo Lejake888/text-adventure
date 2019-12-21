@@ -202,6 +202,15 @@ inputButton.addEventListener("click", () => {
     let used = useItem()
     // document.getElementById("displayBox").innerHTML = `You used the: ${used.name}`
     // player.storage.pop(used) // It's probably splice/slice to get rid of specific item
+    for (i = 0; i > player.storage.length; i++) {
+      if (used.name == player.storage[i].name) {
+        console.log("match")
+        player.storage.splice(i,1)
+      }
+      else {
+        console.log("match")
+      }
+    }
     if (messageCounter == 4) {
       // nextButton.disabled = true;
       if (used.name == "Torch") {
