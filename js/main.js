@@ -55,6 +55,21 @@ const dropItem = () => {
   }
 }
 
+const removeItem = (used) => {
+  console.log("third check")
+  for (i = 0; i > player.storage.length; i++) {
+    console.log("fourth check")
+    if (used.name == player.storage[i].name) {
+      console.log("used loop: "+ player.storage[i].name)
+      console.log("match")
+      player.storage.splice(i,1)
+    }
+    else {
+      console.log("match")
+    }
+  }
+}
+
 const useItem = () => {
   document.getElementById("displayBox").innerHTML = ``
   document.getElementById("log").innerHTML = `What item would you like to use:<br>`
@@ -62,25 +77,20 @@ const useItem = () => {
     document.getElementById("log").innerHTML += `- ${player.storage[i].name}<br>`
   }
   if (choice == 1) {
-    console.log(player.storage[0])
     return player.storage[0]
   }
   else if (choice == 2) {
-    console.log(player.storage[1])
     return player.storage[1]
   }
   else if (choice == 3) {
-    console.log(player.storage[2])
     return player.storage[2]
   }
   else if (choice == 4) {
-    console.log(player.storage[3])
     return player.storage[3]
   }
 }
 
 const duplicateCheck = (item) => {
-  console.log(item.name)
   for (i = 0; i < player.storage.length; i++) {
     if (item.name == player.storage[i].name) {
       return true
@@ -159,7 +169,6 @@ const displayText = (currentText) => {
   else {
     if (currentText == message4) {
       inputBox.style.visibility = "visible";
-      console.log(player)
     }
     
     nextButton.style.visibility = "visible";
@@ -200,33 +209,20 @@ inputButton.addEventListener("click", () => {
   }
   else {
     let used = useItem()
-    // document.getElementById("displayBox").innerHTML = `You used the: ${used.name}`
-    // player.storage.pop(used) // It's probably splice/slice to get rid of specific item
-    for (i = 0; i > player.storage.length; i++) {
-      if (used.name == player.storage[i].name) {
-        console.log("match")
-        player.storage.splice(i,1)
-      }
-      else {
-        console.log("match")
-      }
-    }
+    console.log("used: "+ used.name)
     if (messageCounter == 4) {
-      // nextButton.disabled = true;
+      console.log("first check")
       if (used.name == "Torch") {
+        console.log("second check")
         document.getElementById("log").innerHTML = ""
-        console.log("item used")
         characterCount = 0;
-        console.log(puzzleArray[puzzleCounter])
         displayText(puzzleArray[puzzleCounter])
         puzzleCounter++
+        removeItem(used)
       }
       else {
         document.getElementById("displayBox").innerHTML = `Using the ${used.name} did nothing<br>`
       }
-    }
-    else {
-      // nextButton.disabled = false;
     }
   }
 });
