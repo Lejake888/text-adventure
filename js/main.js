@@ -57,7 +57,7 @@ const dropItem = () => {
 
 const removeItem = (used) => {
   console.log("third check")
-  for (i = 0; i > player.storage.length; i++) {
+  for (i = 0; i < player.storage.length; i++) {
     console.log("fourth check")
     if (used.name == player.storage[i].name) {
       console.log("used loop: "+ player.storage[i].name)
