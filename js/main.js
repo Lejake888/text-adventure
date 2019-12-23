@@ -56,16 +56,9 @@ const dropItem = () => {
 }
 
 const removeItem = (used) => {
-  console.log("third check")
   for (i = 0; i < player.storage.length; i++) {
-    console.log("fourth check")
     if (used.name == player.storage[i].name) {
-      console.log("used loop: "+ player.storage[i].name)
-      console.log("match")
       player.storage.splice(i,1)
-    }
-    else {
-      console.log("match")
     }
   }
 }
@@ -209,11 +202,8 @@ inputButton.addEventListener("click", () => {
   }
   else {
     let used = useItem()
-    console.log("used: "+ used.name)
     if (messageCounter == 4) {
-      console.log("first check")
       if (used.name == "Torch") {
-        console.log("second check")
         document.getElementById("log").innerHTML = ""
         characterCount = 0;
         displayText(puzzleArray[puzzleCounter])
