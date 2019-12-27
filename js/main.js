@@ -69,18 +69,7 @@ const useItem = () => {
   for (i=0; i < player.storage.length; i++) {
     document.getElementById("log").innerHTML += `- ${player.storage[i].name}<br>`
   }
-  if (choice == 1) {
-    return player.storage[0]
-  }
-  else if (choice == 2) {
-    return player.storage[1]
-  }
-  else if (choice == 3) {
-    return player.storage[2]
-  }
-  else if (choice == 4) {
-    return player.storage[3]
-  }
+  return player.storage[choice-1]
 }
 
 const duplicateCheck = (item) => {
@@ -211,7 +200,7 @@ inputButton.addEventListener("click", () => {
         removeItem(used)
       }
       else {
-        document.getElementById("displayBox").innerHTML = `Using the ${used.name} did nothing<br>`
+        document.getElementById("displayBox").innerHTML = `Using the "${used.name}" did nothing<br>`
       }
     }
   }
