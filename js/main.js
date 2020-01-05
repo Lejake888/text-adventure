@@ -125,7 +125,9 @@ const nextMessage = (bool) => {
     messageCounter++
   }
   else {
-    messageCounter--
+    if (messageCounter > 0) {
+      messageCounter--
+    }
   }
   displayText(stage1Array[messageCounter])
 }
