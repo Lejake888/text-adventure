@@ -65,6 +65,7 @@ const removeItem = (used) => {
 
 const useItem = () => {
   document.getElementById("displayBox").innerHTML = ``
+  document.getElementById("log").style.color = "red";
   document.getElementById("log").innerHTML = `What item would you like to use:<br>`
   for (i=0; i < player.storage.length; i++) {
     document.getElementById("log").innerHTML += `- ${player.storage[i].name}<br>`
@@ -120,6 +121,7 @@ const collectItem = (choice) => {
 }
 
 const nextMessage = (bool) => {
+  document.getElementById("log").style.color = "lime";
   characterCount = 0;
   if (bool) {
     messageCounter++
@@ -179,6 +181,7 @@ previousButton.addEventListener("click", () => {
 useItemButton.addEventListener("click", () => {
   inputBox.style.visibility = "visible";
   useItem()
+
 });
 
 dropItemButton.addEventListener("click", () => {
