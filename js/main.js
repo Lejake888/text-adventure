@@ -2,7 +2,7 @@ let message1 = "Welcome to the 'text-based adventure' game! This game will inclu
 let message2 = "If you are given a choice, you must input the number assigned to that item. For example, you will be given a list of items (1- Torch) (2- Key) (3- Knife). If you want to pick up the 'Torch', you would input the number '1'. Once you pick up that item, it is in your inventory and will not be available for you to pick up. Each item takes up a space in your inventory. Bigger items take up more space. There will be way to increase your storage space throughout the game, but by default, you have an inventory size of 4. To use an item, click the 'Use Item' button.";
 let message3 = "The game will start after this screen... good luck";
 let message4 = "You start off in a very dark room, with a single lightbulb hanging over your head. There are three items on the floor, pick up what you want, if anything (1- Torch) (2- Key) (3- Knife)";
-let message5 = "It's still very dark, and you can barely see in front of you. You won't be able to move on if you want to continue";
+let message5 = "It's still very dark, and you can barely see in front of you. You won't be able to move on if you want to continue...";
 
 let message6 = "You walk through the door and there is a lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam molestiae, nisi incidunt magnam eum natus quibusdam doloremque repellendus fugiat aliquam eius a cum, necessitatibus tempora possimus dolor ipsum sunt expedita."
 
@@ -48,8 +48,8 @@ class Items {
 let player = new Player()
 
 const dropItem = () => {
+  document.getElementById("log").style.color = "blue";
   document.getElementById("displayBox").innerHTML = ``
-  document.getElementById("log").style.color = "red";
   document.getElementById("log").innerHTML = `What item would you like to drop:<br>`
   for (i=0; i < player.storage.length; i++) {
     document.getElementById("log").innerHTML += `- ${player.storage[i].name}<br>`
@@ -65,8 +65,8 @@ const removeItem = (used) => {
 }
 
 const useItem = () => {
-  document.getElementById("displayBox").innerHTML = ``
   document.getElementById("log").style.color = "red";
+  document.getElementById("displayBox").innerHTML = ``
   document.getElementById("log").innerHTML = `What item would you like to use:<br>`
   for (i=0; i < player.storage.length; i++) {
     document.getElementById("log").innerHTML += `- ${player.storage[i].name}<br>`
@@ -140,6 +140,7 @@ const clearLog = (bool) => {
 }
 
 const displayText = (currentText) => {
+  document.getElementById("log").style.color = "lime";
   nextButton.style.visibility = "hidden";
   previousButton.style.visibility = "hidden";
   useItemButton.style.visibility = "hidden";
@@ -181,7 +182,6 @@ previousButton.addEventListener("click", () => {
 useItemButton.addEventListener("click", () => {
   inputBox.style.visibility = "visible";
   useItem()
-  document.getElementById("log").style.color = "lime";
 });
 
 dropItemButton.addEventListener("click", () => {
