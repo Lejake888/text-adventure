@@ -54,6 +54,7 @@ const dropItem = () => {
   for (i=0; i < player.storage.length; i++) {
     document.getElementById("log").innerHTML += `- ${player.storage[i].name}<br>`
   }
+  removeItem(player.storage[choice-1])
 }
 
 const removeItem = (used) => {
