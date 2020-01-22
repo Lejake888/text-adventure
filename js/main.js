@@ -142,11 +142,11 @@ const clearLog = (bool) => {
 
 const displayText = (currentText) => {
   document.getElementById("log").style.color = "lime";
-  nextButton.style.visibility = "hidden";
-  previousButton.style.visibility = "hidden";
-  useItemButton.style.visibility = "hidden";
-  dropItemButton.style.visibility = "hidden";
-  inputBox.style.visibility = "hidden";
+  nextButton.style.display = "none";
+  previousButton.style.display = "none";
+  useItemButton.style.display = "none";
+  dropItemButton.style.display = "none";
+  inputBox.style.display = "none";
   document.getElementById("displayBox").innerHTML = ""
 
   if (characterCount < currentText.length) {
@@ -156,13 +156,13 @@ const displayText = (currentText) => {
   }
   else {
     if (currentText == message4) {
-      inputBox.style.visibility = "visible";
+      inputBox.style.display = "inline";
     }
     
-    nextButton.style.visibility = "visible";
-    previousButton.style.visibility = "visible";
-    useItemButton.style.visibility = "visible";
-    dropItemButton.style.visibility = "visible";
+    nextButton.style.display = "inline";
+    previousButton.style.display = "inline";
+    useItemButton.style.display = "inline";
+    dropItemButton.style.display = "inline";
   }
 }
 
@@ -181,12 +181,12 @@ previousButton.addEventListener("click", () => {
 });
 
 useItemButton.addEventListener("click", () => {
-  inputBox.style.visibility = "visible";
+  inputBox.style.display = "inline";
   useItem()
 });
 
 dropItemButton.addEventListener("click", () => {
-  inputBox.style.visibility = "visible";
+  inputBox.style.display = "inline";
   dropItem()
 });
 
