@@ -212,6 +212,8 @@ inputButton.addEventListener("click", () => {
   }
 });
 
+// Test upload to github
+
 window.onload = () => {
   displayText(message1)
 }
